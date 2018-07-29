@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
-import EventListAttendee from "./EventListAttendee";
+import React, { Component } from 'react';
+import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
+import EventListAttendee from './EventListAttendee';
 
 class EventListItem extends Component {
   render() {
@@ -10,11 +10,7 @@ class EventListItem extends Component {
         <Segment>
           <Item.Group>
             <Item>
-              <Item.Image
-                size="tiny"
-                circular
-                src={event.hostPhotoURL}
-              />
+              <Item.Image size="tiny" circular src={event.hostPhotoURL} />
               <Item.Content>
                 <Item.Header as="a">{event.title}</Item.Header>
                 <Item.Description>
@@ -32,7 +28,10 @@ class EventListItem extends Component {
         </Segment>
         <Segment secondary>
           <List horizontal>
-            {event.attendees.map(attendee => <EventListAttendee attendee={attendee} key={attendee.id}/>)}
+            {event.attendees &&
+              event.attendees.map(attendee => (
+                <EventListAttendee attendee={attendee} key={attendee.id} />
+              ))}
           </List>
         </Segment>
         <Segment clearing>
